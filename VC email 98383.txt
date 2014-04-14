@@ -1,4 +1,4 @@
 VC Email
 
-* #799619 changed edit link to /_editfreeze
-* #98451 changed edit link to /_editfreeze
+* #799619 changed edit link to /_editfreeze ** this doesn't need to be migrated
+* #98451 changed edit link to /_editfreeze ** this doesn't need to be migrated
