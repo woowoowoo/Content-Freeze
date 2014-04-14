@@ -1,0 +1,4 @@
+VC Email
+
+* #799619 changed edit link to /_editfreeze
+* #98451 changed edit link to /_editfreeze
