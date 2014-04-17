@@ -1,0 +1,107 @@
+<h1>Create a location</h1>
+<div id="message">Click the map to select location: or centre on a campus:
+<ul class="campuslist">
+	<li><a id="parkville" href="#">Parkville</a></li>
+	<li><a id="southbank" href="#">Southbank</a></li>
+	<li><a id="burnley" href="#">Burnley</a></li>
+	<li><a id="creswick" href="#">Creswick</a></li>
+	<li><a id="dookie" href="#">Dookie</a></li>
+	<li><a id="shepparton" href="#">Shepparton</a></li>
+	<li><a id="werribee" href="#">Werribee</a></li>
+</ul>
+</div>
+<div id="map" style="height:400px;"></div>
+%create_error%
+<p>Fill out as much information as you can. The submission will be reviewed before going live.</p>
+<p class="importantnotice">Please don't use ampersands or special characters in building and page names - they break the XML feeds!</p>
+<div id="create_form">
+%create_form%
+</div>
+
+<script src="http://a1.unimelb.edu.au/js/jquery/jquery-1.6.2.min.js"></script>
+
+<script type="text/javascript">
+// initialize the map on the "map" div with a given center and zoom based on the parent folder
+  var map = new L.Map('map', {
+    center: new L.LatLng(-37.79865,144.96082),
+    zoom: 15
+  });
+
+// create a CloudMade tile layer
+  var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/d11766b243c35d3982c6bd384806d9da/44858/256/{z}/{x}/{y}.png',
+  cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+  cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
+  map.addLayer(cloudmade);
+
+// now, lets capture some clicks
+map.on('click', onMapClick);
+var popup = new L.Popup();
+
+function onMapClick(e) {
+	var latStr = e.latlng.lat.toFixed(4);
+	var lngStr = e.latlng.lng.toFixed(4);
+    var latlngStr = '(' + latStr + ', ' + lngStr + ')';
+
+    popup.setLatLng(e.latlng);
+    popup.setContent("<b>Selected location</b><br>" + latlngStr);
+
+    document.getElementById('metadata_field_text_104227_value').value = latStr;
+    document.getElementById('metadata_field_text_104226_value').value = lngStr;
+
+    map.openPopup(popup);
+}
+
+// and some hacky stuff to centre the map on individual campuses
+$( document ).ready(function(){
+	$('#parkville').click(function(){
+		var moveTo = new L.LatLng(-37.7964,144.9616)
+		map.setView(moveTo,15)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Parkville Campus</b>");
+		map.openPopup(popup);
+	});
+	$('#southbank').click(function(){
+		var moveTo = new L.LatLng(-37.8248,144.9688)
+		map.setView(moveTo,17)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Southbank Campus</b>");
+		map.openPopup(popup);
+	});
+	$('#burnley').click(function(){
+		var moveTo = new L.LatLng(-37.8291,145.02257)
+		map.setView(moveTo,17)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Burnley Campus</b>");
+		map.openPopup(popup);
+	});
+	$('#creswick').click(function(){
+		var moveTo = new L.LatLng(-37.42259,143.89720)
+		map.setView(moveTo,17)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Creswick Campus</b>");
+		map.openPopup(popup);
+	});
+	$('#dookie').click(function(){
+		var moveTo = new L.LatLng(-36.38416,145.70602)
+		map.setView(moveTo,16)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Dookie Campus</b>");
+		map.openPopup(popup);
+	});
+	$('#shepparton').click(function(){
+		var moveTo = new L.LatLng(-36.36163,145.40623)
+		map.setView(moveTo,17)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Shepparton Campus</b>");
+		map.openPopup(popup);
+	});
+	$('#werribee').click(function(){
+		var moveTo = new L.LatLng(-37.88911,144.69314)
+		map.setView(moveTo,17)
+		popup.setLatLng(moveTo);
+		popup.setContent("<b>Werribee Campus</b>");
+		map.openPopup(popup);
+	});
+});
+
+</script>
