@@ -1,0 +1,20 @@
+Client (Jonathan Finch) created asset ID#994242 using an asset builder.
+
+Need to create the same asset in the new system when able.
+* parent asset: #293714 (building 863)
+* asset name: Counselling Service
+* web path: counselling
+
+Metadata:
+* Object (building) name 	Counselling Service Rooms
+* Longitude 	144.9695
+* Latitude 	-37.8246
+* AlternateName 	(default)	
+* StreetAddress 	(default)	
+* CampusMapRefA 	G
+* CampusMapRefN 	11
+* PictureURL 	(default)	
+* InfoURL 	(default)	
+* BuildingNumber 	863
+* ObjectType 	Building
+* Directions 	Entrance is opposite film and television
